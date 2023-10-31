@@ -2,9 +2,11 @@ import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { HttpModule } from '@nestjs/axios';
+import { ZodValidationPipe } from 'nestjs-zod';
+
 import { SharedModule } from '@/modules/shared.module';
 
 @Module({
@@ -36,6 +38,10 @@ import { SharedModule } from '@/modules/shared.module';
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    {
+      provide: APP_PIPE,
+      useClass: ZodValidationPipe,
     },
   ],
 })

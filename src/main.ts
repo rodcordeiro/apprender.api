@@ -8,6 +8,7 @@ import helmet from '@fastify/helmet';
 import compression from '@fastify/compress';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import fastifyCsrf from '@fastify/csrf-protection';
+import { patchNestJsSwagger } from 'nestjs-zod';
 
 import { AppModule } from '@/app.module';
 import { AppUtils } from '@/common/utils/app.util';
@@ -68,6 +69,7 @@ async function bootstrap() {
    * Swagger
    * ------------------------------------------------------
    */
+  patchNestJsSwagger();
   const config = new DocumentBuilder()
     .setTitle('Apprender')
     .setDescription('Apprender RestAPI documentation and examples')

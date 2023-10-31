@@ -1,4 +1,4 @@
-import { Column, Entity, BeforeInsert, OneToMany, JoinColumn } from 'typeorm';
+import { Column, Entity, BeforeInsert } from 'typeorm';
 import { hashSync } from 'bcrypt';
 
 import { BaseEntity } from '@/common/entities/base.entity';
